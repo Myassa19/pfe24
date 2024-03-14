@@ -95,7 +95,7 @@
         ul ul a {
             font-size: 0.9em !important;
             padding-left: 30px !important;
-            background: rgba(114, 114, 113, 0.877);
+            background: rgba(82, 82, 81, 0.877);
         }
 
         ul.CTAs {
@@ -167,23 +167,21 @@ a:focus {
     transition: all 0.3s;
 }
  /* Style pour les boutons */
- .btn-dark,
-        .btn-warning {
-            margin-right: 5px;
-        }
+ .bi-pencil-square
 
         /* Style pour le champ de recherche */
         .search-input {
-            max-width: 200px;
+            max-width: 250px;
         }
-        .search-button{
-            margin-right: 15px;
-
-        }
+       
+       .btn.btn-warning{
+        margin-right: 17px;
+       }
     </style>
 </head>
 
 <body>
+    
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -210,7 +208,7 @@ a:focus {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Objet</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Ordinateurs</a>
+                            <a href="ordinateur.html">Ordinateurs</a>
                         </li>
                         <li>
                             <a href="#">Imprimants</a>
@@ -257,24 +255,31 @@ a:focus {
         <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+            
                     <button type="button" id="sidebarCollapse" class="btn btn-dark">
                         <i class="fas fa-align-left"></i>
                     </button>
-                    <button type="button" class="btn btn-warning">Add</button>
-                    <div class="search-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    <i class="bi bi-pencil-square">
+                       
+                    <button  type="button" class="btn btn-warning " >Add</button>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                       </svg>
-                    </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                                          </svg></i>
+                   
                     <div>
                         
                         <input type="text" placeholder="Search" class="form-control search-input">
                     </div>
 
-                </div>
+                 </div>
             </nav>
+            
             <script>
                 $(document).ready(function () {
                     $('#sidebarCollapse').on('click', function () {
@@ -284,6 +289,7 @@ a:focus {
             </script>
         </div>
     </div>
+    
 </body>
 
 </html>
