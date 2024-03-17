@@ -238,9 +238,13 @@ a:focus {
                         <li>
                             <a href="#">Profils</a>
                         </li>
+
                         <li>
-                            <a href="#">Rules</a>
+                           
+                            <a href="role.html">Role</a>
+                        
                         </li>
+                        
                     </ul>
                 </li>
 
@@ -272,80 +276,79 @@ a:focus {
         </button>
 
         <div class="d-flex align-items-center">
+          <!-- Barre de navigation -->
+
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                 Add
             </button>
                   
                 
-                    <!-- Modal -->
-                   
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a user</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+            
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add a user</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3 needs-validation" novalidate>
+                                <div class="col-md-4 position-relative">
+                                    <label for="validationTooltip01" class="form-label">Firstname</label>
+                                    <input type="text" class="form-control" id="validationTooltip01" required>
+                                    <div class="valid-tooltip">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Lastname</label>
+                                    <input type="text" class="form-control" id="validationTooltip02" required>
+                                    <div class="valid-tooltip">
+                                        Looks good!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 position-relative">
+                                    <label for="validationTooltipUsername" class="form-label">Username</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                                        <div class="invalid-tooltip">
+                                            Please choose a unique and valid username.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 position-relative">
+                                    <label for="validationTooltip04" class="form-label">Groupe</label>
+                                    <select class="form-select custom-select" id="validationTooltip04" required>
+                                        <option selected disabled value="">Choisir un groupe</option>
+                                        <option>Groupe 1</option>
+                                        <option>Groupe 2</option>
+                                        <option>Groupe 3</option>
+                                        <option>Groupe 4</option>
+                                    </select>
+                                </div>
+                                <!-- Nouveau champ pour la liste d'options de rôle -->
+                                <div class="col-md-3 position-relative">
+                                    <label for="validationTooltip05" class="form-label">Rôle</label>
+                                    <select class="form-select custom-select" id="validationTooltip05" required>
+                                        <option selected disabled value="">Choisir un rôle</option>
+                                        <option>Administrateur</option>
+                                        <option>Utilisateur</option>
+                                        <option>technicien</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-12"> <br>
+                                    <button class="btn btn-warning" type="submit">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-md-4 position-relative">
-                        <label for="validationTooltip01" class="form-label">Firstname</label>
-                        <input type="text" class="form-control" id="validationTooltip01"  required>
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4 position-relative">
-                        <label for="validationTooltip02" class="form-label">Lastname</label>
-                        <input type="text" class="form-control" id="validationTooltip02"  required>
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4 position-relative">
-                        <label for="validationTooltipUsername" class="form-label">Username</label>
-                        <div class="input-group has-validation">
-                            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-                            <div class="invalid-tooltip">
-                                Please choose a unique and valid username.
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div class="col-md-3 position-relative">
-                        <label for="validationTooltip04" class="form-label">Groupe</label>
-    <select class="form-select custom-select" id="validationTooltip04" required>
-        <option selected disabled value="">Choisir un groupe</option>
-        <option>Groupe 1</option>
-        <option>Groupe 2</option>
-        <option>Groupe 3</option>
-        <option>Groupe 4</option>
-    </select>
-    <br>
-    <br>
-                        <div class="invalid-tooltip">
-                            Please select a valid Groupe
-                        </div>
-                    </div>
-                    <div class="col-md-3 position-relative">
-                        <label for="validationTooltip05" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="validationTooltip05" required>
-                        <div class="invalid-tooltip">
-                            Please provide a valid ID.
-                        </div>
-                    </div>
-                    
-                    <div class="col-12">
-                        <button class="btn btn-warning" type="submit">Add</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+            
 
 <div class="mx-3">
     <!-- Ajoutez les icônes ici -->
@@ -366,17 +369,33 @@ a:focus {
 
 
 </nav>
-            <br><br><br><br>
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <svg class="  " xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+    </svg>
+    <div class="container-fluid d-flex align-items-center">
+        <h2 class="m-0 me-2">Users List</h2>
+        <!-- Icône "bi-people-fill" -->
+  
+    </div>
+</nav>
+            <br>
             <div class="container">
                 <table class="table  table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
-                            <th>Type</th>
-                            <th>Réeseau</th>
-                            <th>Username</th>
-                            <th>Groupe</th>
-                           
+
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Role</th>
+                            <th>groupe</th>
+                            
+                            <th>Email</th>
+                            <th>Active</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -386,7 +405,9 @@ a:focus {
                             <td>Doe</td>
                             <td>@john_doe</td>
                             <td>@john_doe</td>
-                     
+                             <td></td>
+                             <td></td>
+                             <td></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -394,6 +415,9 @@ a:focus {
                             <td>Smith</td>
                             <td>@jane_smith</td>
                             <td>@jane_smith</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -401,6 +425,9 @@ a:focus {
                             <td>Johnson</td>
                             <td>@mark_johnson</td>
                             <td>@jane_smith</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
                         </tr>
                     </tbody>
                 </table>
