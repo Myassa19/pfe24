@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>accueil</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -177,6 +177,9 @@ a:focus {
        .btn.btn-warning{
         margin-right: 17px;
        }
+       .search{
+        max-width: 220px;
+       }
     </style>
 </head>
 
@@ -196,22 +199,29 @@ a:focus {
 
             <ul class="list-unstyled components">
                 <li>
-                    <i class="bi bi-search"></i>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
-                    <input type="text" placeholder="search">
+                    <div class="mx-3">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Search" class="form-control">
+                        </div>
+                    </div>
+                    
                 </li>
+                <br>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Objet</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Object</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="ordinateur.html">Ordinateurs</a>
+                            <a href="ordinateur.html">Computers</a>
                         </li>
                         <li>
-                            <a href="#">Imprimants</a>
+                            <a href="imprimante.html">Printers</a>
                         </li>
 
                     </ul>
@@ -223,13 +233,13 @@ a:focus {
                         class="dropdown-toggle">administration</a>
 
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li> <a href="#">User</a>
+                        <li> <a href="user.html">User</a>
                         </li>
                         <li>
-                            <a href="#">Profil</a>
+                            <a href="profil.html">Profils</a>
                         </li>
                         <li>
-                            <a href="#">Rules</a>
+                            <a href="rule.html">Rules</a>
                         </li>
                     </ul>
                 </li>
@@ -240,10 +250,10 @@ a:focus {
                         class="dropdown-toggle">authentification</a>
                     <ul class="collapse list-unstyled" id="administration">
                         <li>
-                            <a href="#">Domains</a>
+                            <a href="#">Areas</a>
                         </li>
                         <li>
-                            <a href="#">Mail</a>
+                            <a href="#">Mail Server</a>
                         </li>
 
                     </ul>
