@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>ordinateur</title>
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    <!-- Font Awesome -->
@@ -199,22 +199,28 @@ a:focus {
 
             <ul class="list-unstyled components">
                 <li>
-                    <i class="bi bi-search"></i>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
-                    <input type="text" placeholder="search">
+                    <div class="mx-3">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </span>
+                            <input type="text" placeholder="Search" class="form-control">
+                        </div>
+                    </div>
                 </li>
+                <br>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Objet</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Object</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Ordinateurs</a>
+                            <a href="ordinateur.html">Computers</a>
                         </li>
                         <li>
-                            <a href="#">Imprimantes</a>
+                            <a href="imprimante.html">Printers</a>
                         </li>
                     </ul>
                 </li>
@@ -227,10 +233,10 @@ a:focus {
                         class="dropdown-toggle">administration</a>
 
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li> <a href="#">User</a>
+                        <li> <a href="user.html">User</a>
                         </li>
                         <li>
-                            <a href="#">Profil</a>
+                            <a href="#">Profils</a>
                         </li>
                         <li>
                             <a href="#">Rules</a>
@@ -247,7 +253,7 @@ a:focus {
                             <a href="#">Domains</a>
                         </li>
                         <li>
-                            <a href="#">Mail</a>
+                            <a href="#">Mail Server</a>
                         </li>
 
                     </ul>
@@ -277,7 +283,7 @@ a:focus {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajouter un ordinateur</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add a computer</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -285,15 +291,15 @@ a:focus {
             <div class="modal-body">
                 <form class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4 position-relative">
-                        <label for="validationTooltip01" class="form-label">First name</label>
-                        <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
+                        <label for="validationTooltip01" class="form-label">Type</label>
+                        <input type="text" class="form-control" id="validationTooltip01"  required>
                         <div class="valid-tooltip">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 position-relative">
-                        <label for="validationTooltip02" class="form-label">Last name</label>
-                        <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
+                        <label for="validationTooltip02" class="form-label">Network</label>
+                        <input type="text" class="form-control" id="validationTooltip02"  required>
                         <div class="valid-tooltip">
                             Looks good!
                         </div>
@@ -309,31 +315,37 @@ a:focus {
                         </div>
                     </div>
                     <div class="col-md-6 position-relative">
-                        <label for="validationTooltip03" class="form-label">City</label>
+                        <label for="validationTooltip03" class="form-label">Description</label>
                         <input type="text" class="form-control" id="validationTooltip03" required>
                         <div class="invalid-tooltip">
-                            Please provide a valid city.
+                            Please provide a valid Description
                         </div>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <label for="validationTooltip04" class="form-label">State</label>
-                        <select class="form-select" id="validationTooltip04" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>...</option>
-                        </select>
+                        <label for="validationTooltip04" class="form-label">Groupe</label>
+    <select class="form-select custom-select" id="validationTooltip04" required>
+        <option selected disabled value="">Choisir un groupe</option>
+        <option>Groupe 1</option>
+        <option>Groupe 2</option>
+        <option>Groupe 3</option>
+        <option>Groupe 4</option>
+    </select>
+    <br>
+    <br>
                         <div class="invalid-tooltip">
-                            Please select a valid state.
+                            Please select a valid Groupe
                         </div>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <label for="validationTooltip05" class="form-label">Zip</label>
+                        <label for="validationTooltip05" class="form-label">ID</label>
                         <input type="text" class="form-control" id="validationTooltip05" required>
                         <div class="invalid-tooltip">
-                            Please provide a valid zip.
+                            Please provide a valid ID.
                         </div>
                     </div>
+                    
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-warning" type="submit">Add</button>
                     </div>
                 </form>
             </div>
@@ -362,13 +374,15 @@ a:focus {
 </nav>
             <br><br><br><br>
             <div class="container">
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table  table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Réeseau</th>
                             <th>Username</th>
+                            <th>Groupe</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -377,11 +391,14 @@ a:focus {
                             <td>John</td>
                             <td>Doe</td>
                             <td>@john_doe</td>
+                            <td>@john_doe</td>
+                     
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Jane</td>
                             <td>Smith</td>
+                            <td>@jane_smith</td>
                             <td>@jane_smith</td>
                         </tr>
                         <tr>
@@ -389,6 +406,7 @@ a:focus {
                             <td>Mark</td>
                             <td>Johnson</td>
                             <td>@mark_johnson</td>
+                            <td>@jane_smith</td>
                         </tr>
                     </tbody>
                 </table>
