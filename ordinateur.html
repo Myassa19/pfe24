@@ -236,10 +236,10 @@ a:focus {
                         <li> <a href="user.html">User</a>
                         </li>
                         <li>
-                            <a href="#">Profils</a>
+                            <a href="profil.html">Profils</a>
                         </li>
                         <li>
-                            <a href="#">Rules</a>
+                            <a href="#">Role"</a>
                         </li>
                     </ul>
                 </li>
@@ -250,7 +250,7 @@ a:focus {
                         class="dropdown-toggle">authentification</a>
                     <ul class="collapse list-unstyled" id="administration">
                         <li>
-                            <a href="#">Domains</a>
+                            <a href="#">Areas</a>
                         </li>
                         <li>
                             <a href="#">Mail Server</a>
@@ -278,8 +278,7 @@ a:focus {
                   
                 
                     <!-- Modal -->
-                   
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -305,9 +304,9 @@ a:focus {
                         </div>
                     </div>
                     <div class="col-md-4 position-relative">
-                        <label for="validationTooltipUsername" class="form-label">Username</label>
+                        <label for="validationTooltipUsername" class="form-label">numéro de série</label>
                         <div class="input-group has-validation">
-                            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                           
                             <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
                             <div class="invalid-tooltip">
                                 Please choose a unique and valid username.
@@ -323,15 +322,26 @@ a:focus {
                     </div>
                     <div class="col-md-3 position-relative">
                         <label for="validationTooltip04" class="form-label">Groupe</label>
-    <select class="form-select custom-select" id="validationTooltip04" required>
-        <option selected disabled value="">Choisir un groupe</option>
-        <option>Groupe 1</option>
-        <option>Groupe 2</option>
-        <option>Groupe 3</option>
-        <option>Groupe 4</option>
-    </select>
-    <br>
-    <br>
+                        <select class="form-select custom-select" id="validationTooltip04" required>
+                            <option selected disabled value="">Choisir un groupe</option>
+                            <option>Groupe 1</option>
+                            <option>Groupe 2</option>
+                            <option>Groupe 3</option>
+                            <option>Groupe 4</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 position-relative">
+                        <label for="validationTooltip05" class="form-label">Lieu</label>
+                        <select class="form-select custom-select" id="validationTooltip05" required>
+                            <option selected disabled value="">Choisir un lieu</option>
+                            <option>Lieu 1</option>
+                            <option>Lieu 2</option>
+                            <option>Lieu 3</option>
+                            <option>Lieu 4</option>
+                        </select>
+
+   
+
                         <div class="invalid-tooltip">
                             Please select a valid Groupe
                         </div>
@@ -344,7 +354,7 @@ a:focus {
                         </div>
                     </div>
                     
-                    <div class="col-12">
+                    <div class="col-12"><br>
                         <button class="btn btn-warning" type="submit">Add</button>
                     </div>
                 </form>
