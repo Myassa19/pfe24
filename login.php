@@ -1,5 +1,5 @@
 <?php
-require_once 'controller.php';
+require_once '../controllers/controller.php';
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
