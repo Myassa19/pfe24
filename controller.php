@@ -1,5 +1,5 @@
 <?php
-require_once 'UserModel.php';
+require_once '../models/UserModel.php';
 
 class controller {
     public function login($email, $password) {
