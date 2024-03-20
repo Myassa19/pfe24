@@ -42,8 +42,8 @@
         }
 
         #sidebar {
-            min-width: 270px;
-            max-width: 250px;
+            min-width: 250px;
+            max-width: 220px;
             background: rgb(59, 59, 58);
             color: #fcf9f9;
             transition: all 0.3s;
@@ -169,7 +169,7 @@ a:focus {
  /* Style pour les boutons */
  .btn-dark,
         .btn-warning {
-            margin-right: 5px;
+            margin-leftt: 50%;
         }
 
         /* Style pour le champ de recherche */
@@ -217,10 +217,10 @@ a:focus {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Object</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="ordinateur.html">Computers</a>
+                            <a href="ordinateur.php">Computers</a>
                         </li>
                         <li>
-                            <a href="imprimante.html">Printers</a>
+                            <a href="imprimante/imprimante.php">Printers</a>
                         </li>
                     </ul>
                 </li>
@@ -272,9 +272,29 @@ a:focus {
         </button>
 
         <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                Add
-            </button>
+            
+                
+                  
+                        
+    <input type="text" placeholder="Search" class="form-control search-input">
+</div>
+</div>
+
+
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
+  <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
+</svg>
+    <div class="container-fluid d-flex align-items-center justify-content-space-between">
+   
+        <h2 class="m-0 me-2">Computers list</h2>
+        <!-- Bouton "Add" -->
+        <button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#exampleModal">
+            Add
+        </button>
+  
                   
                 
                     <!-- Modal -->
@@ -288,17 +308,17 @@ a:focus {
                 </button>
             </div>
             <div class="modal-body">
-                <form class="row g-3 needs-validation" novalidate>
+            <form action="index.php" method="post" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4 position-relative">
                         <label for="validationTooltip01" class="form-label">Type</label>
-                        <input type="text" class="form-control" id="validationTooltip01"  required>
+                        <input type="text" name="type" class="form-control" id="validationTooltip01" required>
                         <div class="valid-tooltip">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4 position-relative">
                         <label for="validationTooltip02" class="form-label">Network</label>
-                        <input type="text" class="form-control" id="validationTooltip02"  required>
+                        <input type="text" name="network" class="form-control" id="validationTooltip02" required>
                         <div class="valid-tooltip">
                             Looks good!
                         </div>
@@ -307,7 +327,7 @@ a:focus {
                         <label for="validationTooltipUsername" class="form-label">numéro de série</label>
                         <div class="input-group has-validation">
                            
-                            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                            <input type="text" name="numserie" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
                             <div class="invalid-tooltip">
                                 Please choose a unique and valid username.
                             </div>
@@ -315,14 +335,14 @@ a:focus {
                     </div>
                     <div class="col-md-6 position-relative">
                         <label for="validationTooltip03" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="validationTooltip03" required>
+                        <input type="text" name="description" class="form-control" id="validationTooltip03" required>
                         <div class="invalid-tooltip">
                             Please provide a valid Description
                         </div>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <label for="validationTooltip04" class="form-label">Groupe</label>
-                        <select class="form-select custom-select" id="validationTooltip04" required>
+                        <label for="validationTooltip04"  class="form-label">Groupe</label>
+                        <select name="groupe" class="form-select custom-select" id="validationTooltip04" required>
                             <option selected disabled value="">Choisir un groupe</option>
                             <option>Groupe 1</option>
                             <option>Groupe 2</option>
@@ -331,8 +351,8 @@ a:focus {
                         </select>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <label for="validationTooltip05" class="form-label">Lieu</label>
-                        <select class="form-select custom-select" id="validationTooltip05" required>
+                        <label for="validationTooltip05"  class="form-label">Lieu</label>
+                        <select  name="lieu" class="form-select custom-select" id="validationTooltip05" required>
                             <option selected disabled value="">Choisir un lieu</option>
                             <option>Lieu 1</option>
                             <option>Lieu 2</option>
@@ -348,7 +368,7 @@ a:focus {
                     </div>
                     <div class="col-md-3 position-relative">
                         <label for="validationTooltip05" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="validationTooltip05" required>
+                        <input type="text" name="idob" class="form-control" id="validationTooltip05" required>
                         <div class="invalid-tooltip">
                             Please provide a valid ID.
                         </div>
@@ -363,66 +383,87 @@ a:focus {
     </div>
 </div>
 
-<div class="mx-3">
-    <!-- Ajoutez les icônes ici -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-    </svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-    </svg>
-</div>
+
 </div>
 <div>
-                        
-    <input type="text" placeholder="Search" class="form-control search-input">
-</div>
-</div>
-
-
+    </div>
 </nav>
-            <br><br><br><br>
+            <br>
             <div class="container">
-                <table class="table  table-bordered table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Type</th>
-                            <th>Réeseau</th>
-                            <th>Username</th>
-                            <th>Groupe</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>@john_doe</td>
-                            <td>@john_doe</td>
-                     
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane</td>
-                            <td>Smith</td>
-                            <td>@jane_smith</td>
-                            <td>@jane_smith</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mark</td>
-                            <td>Johnson</td>
-                            <td>@mark_johnson</td>
-                            <td>@jane_smith</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <table class="table  table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Idob</th>
+                <th>Type</th>
+                <th>Network</th>
+                <th>Numero de série</th>
+                <th>Groupe</th>
+                <th>Lieu</th>
+                <th>Description</th>
+                <th>option</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Inclure le contenu de index.php ici
+            include 'index.php';
+            ?>
+        </tbody>
+    </table>
+</div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Computer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-           
-             
+            <div class="modal-body">
+                <!-- Formulaire de modification des informations de l'ordinateur -->
+                <form action="index.php" method="post" id="editForm">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" id="editComputerId" name="idob" value="<?php echo $computer['idob']; ?>">
+                    <div class="form-group">
+                        <label for="editComputerType">Type</label>
+                        <input type="text" class="form-control" id="editComputerType" name="type" value="<?php echo $computer['type']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">Network</label>
+                        <input type="text" class="form-control" id="editComputerNetwork" name="network" value="<?php echo $computer['network']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerType">Numero de serie</label>
+                        <input type="text" class="form-control" id="editComputerType" name="numserie" value="<?php echo $computer['numserie']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">Description</label>
+                        <input type="text" class="form-control" id="editComputerNetwork" name="description" value="<?php echo $computer['description']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerType">Groupe</label>
+                        <input type="text" class="form-control" id="editComputerType" name="groupe" value="<?php echo $computer['groupe']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">Lieu</label>
+                        <input type="text" class="form-control" id="editComputerNetwork" name="lieu" value="<?php echo $computer['lieu']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">ID</label>
+                        <input type="text" class="form-control" id="editComputerNetwork" name="idob" value="<?php echo $computer['idob']; ?>">
+                    </div>
+                    <!-- Ajoutez d'autres champs pour les autres informations -->
+                    <button type="submit" class="btn btn-warning "  data-id="<?php echo $computer['idob']; ?>">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
             <script>
               
               
@@ -435,16 +476,14 @@ a:focus {
                 $(this).find('[autofocus]').focus();
             });
         });
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
+     
+                $(document).ready(function () {
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                });
+           
 
-            // Ensure that the modal is triggered correctly
-            $('#exampleModal').on('shown.bs.modal', function () {
-                $(this).find('[autofocus]').focus();
-            });
-        });
             </script>
         </div>
     </div>
