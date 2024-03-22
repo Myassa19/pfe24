@@ -64,19 +64,14 @@ class ComputerModel {
     }
   
 
-    public function updateComputer($idob, $numserie, $type, $network, $groupe, $lieu, $description) {
-        // Mettez à jour la ligne dans la base de données avec les nouvelles informations
-        $query = "UPDATE computers SET numserie = :numserie, type = :type, network = :network, groupe = :groupe, lieu = :lieu, description = :description WHERE idob = :idob";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':idob', $idob);
-        $stmt->bindParam(':numserie', $numserie);
-        $stmt->bindParam(':type', $type);
-        $stmt->bindParam(':network', $network);
-        $stmt->bindParam(':groupe', $groupe);
-        $stmt->bindParam(':lieu', $lieu);
-        $stmt->bindParam(':description', $description);
-        $stmt->execute();
-    }
+ // Assurez-vous que les données du formulaire sont correctement récupérées et transmises à la méthode updateComputer() du modèle
+ public function updatecomputer($idob, $numserie, $type, $network, $groupe, $lieu, $description) {
+    $query = "UPDATE computers SET numserie=?, type=?, network=?, groupe=?, lieu=?, description=? WHERE idob=?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$numserie, $type, $network, $groupe, $lieu, $description, $idob]);
+    return $stmt->rowCount() > 0;
+}
+
 }
     
 
