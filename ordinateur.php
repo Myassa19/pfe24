@@ -42,8 +42,8 @@
         }
 
         #sidebar {
-            min-width: 270px;
-            max-width: 250px;
+            min-width: 250px;
+            max-width: 220px;
             background: rgb(59, 59, 58);
             color: #fcf9f9;
             transition: all 0.3s;
@@ -217,10 +217,10 @@ a:focus {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Object</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="ordinateur.html">Computers</a>
+                            <a href="ordinateur.php">Computers</a>
                         </li>
                         <li>
-                            <a href="imprimante.html">Printers</a>
+                            <a href="imprimante/imprimante.php">Printers</a>
                         </li>
                     </ul>
                 </li>
@@ -294,7 +294,8 @@ a:focus {
         <button type="button" class="btn btn-warning ml-auto" data-toggle="modal" data-target="#exampleModal">
             Add
         </button>
-            
+  
+                  
                 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -412,7 +413,84 @@ a:focus {
     </table>
 </div>
 
-             
+      <!-- Modal -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Computer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire de modification des informations de l'ordinateur -->
+                <form action="../controllers/ComputerController.php" method="post" id="editForm">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" id="editComputerId" name="idob">
+                    <div class="form-group">
+                        <label for="editComputerType">Type</label>
+                        <input type="text" class="form-control" id="editComputerType" name="type" >
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="editComputerNetwork">Network</label>
+                        <input type="text" class="form-control" id="editComputerNetwork" name="network">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerType">Numero de serie</label>
+                        <input type="text" class="form-control" id="editComputerNS" name="numserie" >
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">Description</label>
+                        <input type="text" class="form-control" id="editComputerDesc" name="description" >
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerType">Groupe</label>
+                        <input type="text" class="form-control" id="editComputerGrp" name="groupe">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">Lieu</label>
+                        <input type="text" class="form-control" id="editComputerLieu" name="lieu">
+                    </div>
+                    <div class="form-group">
+                        <label for="editComputerNetwork">ID</label>
+                        <input type="text" class="form-control" id="editComputerID" name="idob">
+                    </div>
+                    <!-- Ajoutez d'autres champs pour les autres informations -->
+                    <button type="submit" class="btn btn-warning edit-button" data-id="<?php echo $computer['idob']; ?>" data-toggle="modal" data-target="#editModal" name="editbtn">Edit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- edit -->
+<script>
+        $(document).ready(function () {
+
+            $('.editbtn').on('click', function () {
+
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text().trim();
+                }).get();
+
+                console.log(data);
+
+                $('#editComputerType').val(data[1]);
+                $('#editComputerNetwork').val(data[3]);
+                $('#editComputerNS').val(data[2]);
+                $('#editComputerDesc').val(data[6]);
+                $('#editComputerGrp').val(data[4]);
+                $('#editComputerLieu').val(data[5]);
+                $('#editComputerID').val(data[0]);
+                $('#editComputerId').val(data[0]);
+            });
+        });
+    </script>
+
             <script>
               
               
