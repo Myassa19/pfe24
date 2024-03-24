@@ -44,7 +44,7 @@
         #sidebar {
             min-width: 250px;
             max-width: 220px;
-            background: rgb(59, 59, 58);
+            background: #0a0e1f;
             color: #fcf9f9;
             transition: all 0.3s;
         }
@@ -71,7 +71,7 @@
 
         #sidebar ul li a:hover {
             color: 11131f;
-            background: #252525;
+            background: #131836;
         }
 
         #sidebar ul li.active>a,
@@ -95,7 +95,7 @@
         ul ul a {
             font-size: 0.9em !important;
             padding-left: 30px !important;
-            background: rgba(82, 82, 81, 0.877);
+            background:  #0a0e1f;
         }
 
         ul.CTAs {
@@ -220,7 +220,7 @@ a:focus {
                             <a href="ordinateur.php">Computers</a>
                         </li>
                         <li>
-                            <a href="imprimante/imprimante.php">Printers</a>
+                            <a href="imprimante.php">Printers</a>
                         </li>
                     </ul>
                 </li>
@@ -270,15 +270,20 @@ a:focus {
         <button type="button" id="sidebarCollapse" class="btn btn-dark">
             <i class="fas fa-align-left"></i>
         </button>
+        <form action="index.php" method="post">
+    <div class="input-group">
+        <span class="input-group-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </span>
+        <input type="text" placeholder="Search" class="form-control" name="searchInput">
+    </div>
+    
+</form>
 
-        <div class="d-flex align-items-center">
-            
-                
-                  
-                        
-    <input type="text" placeholder="Search" class="form-control search-input">
-</div>
-</div>
+
+      </div>
 
 
 </nav>
@@ -324,7 +329,7 @@ a:focus {
                         </div>
                     </div>
                     <div class="col-md-4 position-relative">
-                        <label for="validationTooltipUsername" class="form-label">numéro de série</label>
+                        <label for="validationTooltipUsername" class="form-label">num of series</label>
                         <div class="input-group has-validation">
                            
                             <input type="text" name="numserie" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
@@ -333,34 +338,57 @@ a:focus {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 position-relative">
+                    <div class="col-md-4 position-relative">
                         <label for="validationTooltip03" class="form-label">Description</label>
                         <input type="text" name="description" class="form-control" id="validationTooltip03" required>
                         <div class="invalid-tooltip">
                             Please provide a valid Description
                         </div>
                     </div>
-                    <div class="col-md-3 position-relative">
-                        <label for="validationTooltip04"  class="form-label">Groupe</label>
-                        <select name="groupe" class="form-select custom-select" id="validationTooltip04" required>
-                            <option selected disabled value="">Choisir un groupe</option>
-                            <option>Groupe 1</option>
-                            <option>Groupe 2</option>
-                            <option>Groupe 3</option>
-                            <option>Groupe 4</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 position-relative">
-                        <label for="validationTooltip05"  class="form-label">Lieu</label>
-                        <select  name="lieu" class="form-select custom-select" id="validationTooltip05" required>
-                            <option selected disabled value="">Choisir un lieu</option>
-                            <option>Lieu 1</option>
-                            <option>Lieu 2</option>
-                            <option>Lieu 3</option>
-                            <option>Lieu 4</option>
-                        </select>
-
+                    
+       <div class="col-md-5 position-relative">
+       <label for="validationTooltip04" class="form-label">Groupe</label>
+       <div class="d-flex align-items-center">
+           <select name="nomgr" class="form-select custom-select mr-2" id="validationTooltip04" required>
+               <?php
+               // Inclure les options de groupe depuis le contrôleur
+               include_once '../controllers/ComputerController.php';
+               $controller = new ComputerController($computerModel);
+               $controller->getAllGroupes();
+               ?>
+           </select>
+           <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#addGroupModal">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+    </svg>
+</button>
+    
+          
+       </div>
+   </div>
    
+
+
+                    <div class="col-md-5 position-relative">
+                    
+    <label for="validationTooltip05" class="form-label">Location</label>
+    <div class="d-flex align-items-center">
+    <select name="nomL" class="form-select custom-select mr-2" id="validationTooltip04" required>
+    <?php
+               // Inclure les options de groupe depuis le contrôleur
+               include_once '../controllers/ComputerController.php';
+               $controller = new ComputerController($computerModel);
+               $controller->getAllLocation();
+               ?>
+           </select>
+           <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#addLocationModal">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                   <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+               </svg>
+           </button>
+    </div>
+
+
 
                         <div class="invalid-tooltip">
                             Please select a valid Groupe
@@ -396,9 +424,9 @@ a:focus {
                 <th>Idob</th>
                 <th>Type</th>
                 <th>Network</th>
-                <th>Numero de série</th>
+                <th>Num of series</th>
                 <th>Groupe</th>
-                <th>Lieu</th>
+                <th>Location</th>
                 <th>Description</th>
                 <th>option</th>
                 
@@ -408,10 +436,12 @@ a:focus {
             <?php
             // Inclure le contenu de index.php ici
             include 'index.php';
+            
             ?>
         </tbody>
     </table>
 </div>
+
 
       <!-- Modal -->
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -426,7 +456,7 @@ a:focus {
             <div class="modal-body">
                 <!-- Formulaire de modification des informations de l'ordinateur -->
                 <form action="../controllers/ComputerController.php" method="post" id="editForm">
-                    <input type="hidden" name="action" value="update">
+    <input type="hidden" name="action" value="updatecomputer">
                     <input type="hidden" id="editComputerId" name="idob">
                     <div class="form-group">
                         <label for="editComputerType">Type</label>
@@ -446,11 +476,11 @@ a:focus {
                     </div>
                     <div class="form-group">
                         <label for="editComputerType">Groupe</label>
-                        <input type="text" class="form-control" id="editComputerGrp" name="groupe">
+                        <input type="text" class="form-control" id="editComputerGrp" name="nomgr">
                     </div>
                     <div class="form-group">
                         <label for="editComputerNetwork">Lieu</label>
-                        <input type="text" class="form-control" id="editComputerLieu" name="lieu">
+                        <input type="text" class="form-control" id="editComputerLieu" name="nomL">
                     </div>
                     <div class="form-group">
                         <label for="editComputerNetwork">ID</label>
@@ -463,6 +493,58 @@ a:focus {
         </div>
     </div>
 </div>
+
+
+
+
+<form action="index.php" method="post" id="editForm">
+<div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="addGroupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addGroupModalLabel">Add a groupe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire pour ajouter un groupe -->
+                <form id="addGroupForm">
+                    <div class="form-group">
+                        <label for="groupName">Name of groupe</label>
+                        <input type="text" class="form-control" id="groupName" name="groupName" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="index.php" method="post" id="addLocationForm">
+    <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="addLocationModalLabel" aria-hidden="true"> <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addLocationModalLabel">Add alocation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire pour ajouter un groupe -->
+                <form id="addLocationForm">
+                    <div class="form-group">
+                        <label for="locationName">Name of location</label>
+                        <input type="text" class="form-control" id="locationName" name="locationName" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning" form="addLocationForm">Add</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- edit -->
 <script>
@@ -491,27 +573,8 @@ a:focus {
         });
     </script>
 
-            <script>
-              
-              
-               
-        // Assurez-vous que le document est prêt avant d'attacher des événements
-        $(document).ready(function () {
-            // Ajustez l'ID du bouton déclencheur et de la fenêtre modale si nécessaire
-            $('#exampleModal').on('shown.bs.modal', function () {
-                // Mettez le focus sur le premier élément de la fenêtre modale pour une meilleure accessibilité
-                $(this).find('[autofocus]').focus();
-            });
-        });
-     
-                $(document).ready(function () {
-                    $('#sidebarCollapse').on('click', function () {
-                        $('#sidebar').toggleClass('active');
-                    });
-                });
-           
+         
 
-            </script>
         </div>
     </div>
     
