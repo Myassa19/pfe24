@@ -31,14 +31,63 @@ class ComputerModel {
         $this->conn = $db;
     }
 
-    public function addComputer( $idob ,$numserie,$type, $network, $groupe, $lieu, $description) {
-        $query = "INSERT INTO computers (idob, numserie ,type, network, groupe, lieu, description) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$idob,$numserie,$type, $network, $groupe, $lieu, $description]);
-        return $stmt->rowCount() > 0;
+    public function addComputer($idob, $numserie, $type, $network, $nomgr, $nomL, $description) {
+        try {
+            // Récupérer l'id du groupe en fonction du nom du groupe
+            $query_group = "SELECT idgr FROM groupes WHERE nomgr = ?";
+            $stmt_group = $this->conn->prepare($query_group);
+            $stmt_group->execute([$nomgr]);
+            $group_row = $stmt_group->fetch(PDO::FETCH_ASSOC);
+            $idgr = $group_row['idgr'];
+    
+            // Récupérer l'id du lieu en fonction du nom du lieu
+            $query_location = "SELECT idL FROM lieux WHERE nomL = ?";
+            $stmt_location = $this->conn->prepare($query_location);
+            $stmt_location->execute([$nomL]);
+            $location_row = $stmt_location->fetch(PDO::FETCH_ASSOC);
+            $idL = $location_row['idL'];
+    
+            // Insérer les données dans la table computers avec les clés étrangères récupérées
+            $query_insert = "INSERT INTO computers (idob, numserie, type, network, idgr, idL, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt_insert = $this->conn->prepare($query_insert);
+            $stmt_insert->bindParam(1, $idob);
+            $stmt_insert->bindParam(2, $numserie);
+            $stmt_insert->bindParam(3, $type);
+            $stmt_insert->bindParam(4, $network);
+            $stmt_insert->bindParam(5, $idgr);
+            $stmt_insert->bindParam(6, $idL);
+            $stmt_insert->bindParam(7, $description);
+            
+            return $stmt_insert->execute(); // Exécuter la requête et retourner le résultat de l'exécution
+        } catch (PDOException $e) {
+            // Gestion des erreurs PDO
+            echo "Erreur : " . $e->getMessage();
+            return false;
+        }
     }
+    
+    
+    
+    public function getAllGroupes() {
+        $query = "SELECT nomgr FROM groupes";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllLocation() {
+        $query = "SELECT nomL FROM lieux";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
     public function getAllComputers() {
-        $query = "SELECT * FROM computers";
+        $query = "SELECT c.idob, c.type, c.network, c.numserie, c.description, l.nomL, g.nomgr
+        FROM computers c
+        INNER JOIN lieux l ON c.idL = l.idL
+        INNER JOIN groupes g ON c.idgr = g.idgr";
+
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -65,15 +114,57 @@ class ComputerModel {
   
 
  // Assurez-vous que les données du formulaire sont correctement récupérées et transmises à la méthode updateComputer() du modèle
- public function updatecomputer($idob, $numserie, $type, $network, $groupe, $lieu, $description) {
-    $query = "UPDATE computers SET numserie=?, type=?, network=?, groupe=?, lieu=?, description=? WHERE idob=?";
+ 
+    // Requête pour mettre à jour les colonnes de la table computers en utilisant JOIN avec les tables groupes et lieux
+    public function updateComputer($idob,  $type , $network ,$numserie, $nomgr, $nomL, $description) {
+        $query = "UPDATE computers c
+                  INNER JOIN groupes g ON c.idgr = g.idgr
+                  INNER JOIN lieux l ON c.idL = l.idL
+                  SET c.numserie = ?, c.type = ?, c.network = ?, c.description = ?, l.nomL = ?, g.nomgr = ?
+                  WHERE c.idob = ?";
+        
+        $stmt = $this->conn->prepare($query);
+       $stmt->execute([$numserie, $type, $network, $description, $nomL, $nomgr, $idob]);
+        
+        return $stmt->rowCount() > 0;
+    }
+    
+    
+
+
+
+public function searchComputer($searchInput) {
+    $query = "SELECT * FROM computers WHERE idob = :searchInput OR type LIKE :searchInput OR numserie LIKE :searchInput";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$numserie, $type, $network, $groupe, $lieu, $description, $idob]);
-    return $stmt->rowCount() > 0;
+    $searchInput = "%$searchInput%"; // Ajoute des jokers de caractères pour rechercher les parties correspondantes du type ou du numéro de série
+    $stmt->bindParam(":searchInput", $searchInput);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+public function addGroupe($groupName) {
+    try {
+        $stmt = $this->conn->prepare("INSERT INTO groupes (nomgr) VALUES (?)");
+        $stmt->bindParam(1, $groupName);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        // Gestion des erreurs PDO
+        echo "Erreur : " . $e->getMessage();
+        return false;
+    }
+}
+public function addLocation($locationName) {
+    try {
+        $stmt = $this->conn->prepare("INSERT INTO lieux(nomL) VALUES (?)");
+        $stmt->bindParam(1, $locationName);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        // Gestion des erreurs PDO
+        echo "Erreur : " . $e->getMessage();
+        return false;
+    }
 }
 
 }
-    
 
 
 
