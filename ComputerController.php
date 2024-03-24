@@ -9,35 +9,71 @@ class ComputerController {
     }
  
   
-    public function addComputer($idob, $numserie, $type, $network, $groupe, $lieu, $description) {
-        // Ajouter l'ordinateur en utilisant la méthode appropriée (remplacez $this->computer par l'objet approprié)
-        $result = $this->computer->addComputer($idob, $numserie, $type, $network, $groupe, $lieu, $description);
-        
-        // Rediriger vers la page ordinateur.php après l'ajout
+    public function addComputer($idob, $numserie, $type, $network, $nomgr, $nomL, $description) {
+        // Appeler la méthode dans le modèle pour ajouter l'ordinateur
+       $result= $this->computer->addComputer($idob, $numserie, $type, $network, $nomgr, $nomL, $description);
         header("Location: ../views/ordinateur.php");
-        exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
-        
-        // Vous pouvez également retourner le résultat de l'ajout si nécessaire
-        return $result;
+        exit();
     }
+    
     
     public function getAllComputers() {
         // Appel de la méthode pour récupérer tous les ordinateurs du modèle
         return $this->computer->getAllComputers();
        
     }
-    public function updatecomputer($idob, $numserie, $type, $network, $groupe, $lieu, $description) {
-        // Ajouter l'ordinateur en utilisant la méthode appropriée (remplacez $this->computer par l'objet approprié)
-        $result = $this->computer->updatecomputer($idob, $numserie, $type, $network, $groupe, $lieu, $description);
-        
-        // Rediriger vers la page ordinateur.php après l'ajout
+   // ComputerController.php
+
+   public function updateComputer($idob, $type, $network, $numserie, $nomgr, $nomL, $description) {
+    // Appel à la méthode du modèle pour mettre à jour l'ordinateur
+    $result = $this->computer->updateComputer($idob, $type, $network, $numserie, $nomgr, $nomL, $description);
+    
+    // Vérifier si la mise à jour a été effectuée avec succès
+    if ($result) {
+        // Rediriger vers la page appropriée après la mise à jour
         header("Location: ../views/ordinateur.php");
+        exit();
+    } else {
+        // En cas d'erreur lors de la mise à jour, afficher un message d'erreur
+        echo "Erreur lors de la modification de l'ordinateur.";
+    }
+}
+
+
+    public function addGroupe($groupeName) {
+        // Appelez la méthode addGroupe du modèle
+       $result=$this->computer->addGroupe($groupeName);
+     
         exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
         
         // Vous pouvez également retourner le résultat de l'ajout si nécessaire
         return $result;
     }
     
+    public function addLocation($locationName) {
+        // Appeler la méthode dans le modèle pour ajouter le lieu
+        $result=$this->computer->addLocation($locationName);
+        header("Location: ../views/ordinateur.php");
+
+        exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
+        
+        // Vous pouvez également retourner le résultat de l'ajout si nécessaire
+        return $result;
+    }
+    // Autres actions du contrôleur...
+
+    public function getAllGroupes() {
+        $groupes = $this->computer->getAllGroupes();
+        // Inclure la vue pour afficher les options de groupe
+        include '../views/groupes_options.php';
+        
+    }
+    public function getAllLocation() {
+        $lieux = $this->computer->getAllLocation();
+        // Inclure la vue pour afficher les options de groupe
+        include '../views/lieux_options.php';
+        
+    }
 }
 
 // ComputerController.php
@@ -69,26 +105,33 @@ if(isset($_POST['action'])) {
 }
 
 
+// Assurez-vous que le formulaire est soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == "updatecomputer") {
+    // Vérifiez si toutes les données requises sont présentes dans la requête POST
+    if (isset($_POST["idob"], $_POST["type"], $_POST["network"], $_POST["numserie"], $_POST["nomgr"], $_POST["nomL"], $_POST["description"])) {
+        // Récupérer les données depuis la requête POST
+        $idob = $_POST["idob"];
+        $type = $_POST["type"];
+        $network = $_POST["network"];
+        $numserie = $_POST["numserie"];  
+        $nomgr = $_POST["nomgr"];
+        $nomL = $_POST["nomL"];
+        $description = $_POST["description"];
 
-// Traitement du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['editbtn'])) {
-    $idob = $_POST["idob"];
-    $numserie = $_POST["numserie"];  
-    $type = $_POST["type"];
-    $network = $_POST["network"];
-    $groupe = $_POST["groupe"];
-    $lieu = $_POST["lieu"];
-    $description = $_POST["description"];
-    // Ajouter l'ordinateur
-    if ($controller->updatecomputer( $idob, $numserie,$type, $network, $groupe, $lieu, $description)) {
-        echo "Ordinateur modifier avec succès.";
+        // Appeler la méthode updateComputer du contrôleur pour mettre à jour l'ordinateur
+        if ($controller->updateComputer($idob, $type, $network,$numserie, $nomgr, $nomL, $description)) {
+            echo "Ordinateur modifié avec succès.";
+        } else {
+            echo "Erreur lors de la modification de l'ordinateur.";
+        }
     } else {
-        echo "Erreur lors de modification de l'ordinateur.";
+        echo "Toutes les données requises n'ont pas été fournies.";
     }
-
-
-
 }
 
-?>
 
+
+
+
+
+?>
